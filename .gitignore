@@ -1,0 +1,71 @@
+# System files
+*~
+.DS_Store
+[Td]humbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+.Trash-*
+
+# Generated files
+build/
+bin/
+gen/
+out/
+cmake-build-debug/
+
+# Gradle files
+.gradle/
+
+# Java class files
+*.class
+
+# Built application files
+*.apk
+*.ap_
+# Files for the ART/Dalvik VM
+*.dex
+
+# Log Files
+*.log
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Intellij
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Android Studio captures folder
+captures/
+# Android Studio Navigation editor temp files
+.navigation/
+# External native build folder generated in Android Studio 2.2 and later
+.externalNativeBuild
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+Session.vim
+
+# VS Code
+.vscode/*
+
+# Package Files
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Keystore files
+keystore.properties
+*.jks
+
+# Local configuration file (sdk path, etc)
+local.properties
+gradle.properties
