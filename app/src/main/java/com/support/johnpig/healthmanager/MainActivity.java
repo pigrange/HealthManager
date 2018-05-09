@@ -29,10 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("account", account);
                 startActivity(intent);
                 break;
-            case R.id.openSever:
-
-                //todo
-                break;
 
             default:
                 break;

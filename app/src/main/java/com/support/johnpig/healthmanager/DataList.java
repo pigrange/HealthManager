@@ -2,6 +2,7 @@ package com.support.johnpig.healthmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.List;
@@ -18,6 +20,7 @@ public class DataList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_list);
 
@@ -28,7 +31,7 @@ public class DataList extends AppCompatActivity {
 
         Intent intent = getIntent();
         String account = intent.getStringExtra("account");
-        List<UserData> dataList = SQLite.select().from(UserData.class)
+        final List<UserData> dataList = SQLite.select().from(UserData.class)
                 .where(UserData_Table.account.eq(account)).queryList();
 
         RecyclerView recyclerView = findViewById(R.id.dataList);
@@ -40,7 +43,9 @@ public class DataList extends AppCompatActivity {
         adapter.setOnItemClickListener(new UserDataAdapter.OnItemClickListener() {
             @Override
             public void onClick(View view, int pos) {
-                // TODO: 2018/5/9
+                Intent intent1 = new Intent(DataList.this, ShowData.class);
+                intent1.putExtra("userData",new Gson().toJson(dataList.get(pos)));
+                startActivity(intent1);
             }
         });
         recyclerView.setAdapter(adapter);
