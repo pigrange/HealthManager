@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
@@ -18,6 +21,11 @@ public class DataList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_list);
 
+        Toolbar toolbar = findViewById(R.id.toolbar_data_list);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
         String account = intent.getStringExtra("account");
         List<UserData> dataList = SQLite.select().from(UserData.class)
@@ -29,6 +37,23 @@ public class DataList extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         UserDataAdapter adapter = new UserDataAdapter(dataList);
+        adapter.setOnItemClickListener(new UserDataAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(View view, int pos) {
+                // TODO: 2018/5/9
+            }
+        });
         recyclerView.setAdapter(adapter);
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

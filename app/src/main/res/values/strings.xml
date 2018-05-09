@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HealthManager</string>
+    <string name="title_activity_an">AnActivity</string>
+    <string name="title_activity_register">用户注册</string>
 </resources>

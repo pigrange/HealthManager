@@ -1,8 +1,9 @@
 package com.support.johnpig.healthmanager;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -10,8 +11,6 @@ import android.widget.Toast;
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
-
-@SuppressLint("Registered")
 public class RegisterActivity extends AppCompatActivity
         implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
@@ -33,6 +32,12 @@ public class RegisterActivity extends AppCompatActivity
         RadioGroup radioGroup = findViewById(R.id.setSex);
         radioGroup.setOnCheckedChangeListener(this);
         findViewById(R.id.RegisterButton).setOnClickListener(this);
+
+        Toolbar toolbar = findViewById(R.id.toolbar_register);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override
@@ -97,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity
         userData.setHeart_rate(0);
         userData.setHigh_pressure(0);
         userData.setLow_pressure(0);
-        userData.setCreatedTime(String.valueOf(System.currentTimeMillis()));
+        userData.setCreatedTime("2017.3.6");
 
         UserData userData1 = new UserData();
         userData1.setAccount(account);
@@ -107,7 +112,7 @@ public class RegisterActivity extends AppCompatActivity
         userData1.setHeart_rate(1);
         userData1.setHigh_pressure(1);
         userData1.setLow_pressure(1);
-        userData1.setCreatedTime(String.valueOf(System.currentTimeMillis()));
+        userData1.setCreatedTime("2014.5.2");
         userData1.save();
 
         UserData userData2 = new UserData();
@@ -118,7 +123,7 @@ public class RegisterActivity extends AppCompatActivity
         userData2.setHeart_rate(2);
         userData2.setHigh_pressure(2);
         userData2.setLow_pressure(2);
-        userData2.setCreatedTime(String.valueOf(System.currentTimeMillis()));
+        userData2.setCreatedTime("2018.6.3");
         userData2.save();
 
 
@@ -128,5 +133,14 @@ public class RegisterActivity extends AppCompatActivity
         } else {
             Toast.makeText(this, "注册失败", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

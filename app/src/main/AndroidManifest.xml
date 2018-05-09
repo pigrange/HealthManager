@@ -19,9 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_an"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity" />
         <activity android:name=".DataList" />
+        <activity
+            android:name=".AnActivity"
+            android:label="@string/title_activity_an"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

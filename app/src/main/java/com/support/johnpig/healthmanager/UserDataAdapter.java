@@ -13,6 +13,11 @@ import java.util.List;
 public class UserDataAdapter extends RecyclerView.Adapter<UserDataAdapter.ViewHolder> {
 
     private List<UserData> mList;
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
     public UserDataAdapter(List<UserData> list) {
         this.mList = list;
@@ -23,7 +28,7 @@ public class UserDataAdapter extends RecyclerView.Adapter<UserDataAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, onItemClickListener);
 
     }
 
@@ -45,10 +50,23 @@ public class UserDataAdapter extends RecyclerView.Adapter<UserDataAdapter.ViewHo
         TextView dataOwner;
         TextView createdTime;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView, final OnItemClickListener onItemClickListener) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onClick(itemView, getAdapterPosition());
+                    }
+                }
+            });
             dataOwner = itemView.findViewById(R.id.dataOwner);
             createdTime = itemView.findViewById(R.id.createdTime);
         }
     }
+
+    interface OnItemClickListener {
+        void onClick(View view, int pos);
+    }
+
 }
