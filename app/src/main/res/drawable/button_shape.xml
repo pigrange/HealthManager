@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <corners android:radius="10dp" />
-    //设置button的颜色
-    <solid android:color="#74a7c6" />
-    //设置button的大小
-    <size
-        android:height="60dp"
-        android:width="320dp" />
-    //设置button的内边距
-    <padding
-        android:left="5dp"
-        android:right="5dp"
-        android:top="5dp"
-        android:bottom="5dp" />
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false">
+        <shape>
 
-</shape>
+            <corners android:radius="10dp" />
+
+            <solid android:color="#009688" />
+
+            <padding android:bottom="5dp" android:left="5dp" android:right="5dp" android:top="5dp" />
+
+        </shape>
+
+    </item>
+
+    <item android:state_pressed="true">
+        <shape>
+
+            <corners android:radius="10dp" />
+
+            <solid android:color="#607D8B" />
+
+            <padding android:bottom="5dp" android:left="5dp" android:right="5dp" android:top="5dp" />
+
+        </shape>
+
+    </item>
+</selector>
+

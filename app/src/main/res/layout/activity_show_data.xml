@@ -10,7 +10,7 @@
         android:id="@+id/toolbar_showData"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#54768a">
+        android:background="#607D8B">
 
         <TextView
             android:layout_width="wrap_content"
@@ -23,11 +23,11 @@
 
 
     <LinearLayout
-        android:layout_width="220dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="姓名 ："
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/name"
@@ -49,7 +49,7 @@
                 android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="测试"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="性别 ："
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/sex"
@@ -73,7 +73,7 @@
                 android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="测试"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="体温 ："
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/temperature"
@@ -96,7 +96,7 @@
                 android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="测试"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="体重 ："
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/weight"
@@ -120,7 +120,7 @@
                 android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="测试"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="心率 ："
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/heartRate"
@@ -143,7 +143,7 @@
                 android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="测试"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -158,7 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="高压 ："
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/HighPressure"
@@ -167,7 +167,7 @@
                 android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="测试"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -182,7 +182,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="低压 ："
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/lowPressure"
@@ -191,7 +191,7 @@
                 android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="测试"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 

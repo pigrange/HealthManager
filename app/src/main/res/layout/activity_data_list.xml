@@ -10,7 +10,7 @@
         android:id="@+id/toolbar_data_list"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#54768a">
+        android:background="#607D8B">
 
         <TextView
             android:layout_width="wrap_content"

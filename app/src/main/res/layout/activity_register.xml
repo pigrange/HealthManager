@@ -10,7 +10,7 @@
         android:id="@+id/toolbar_register"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#54768a">
+        android:background="#607D8B">
 
         <TextView
             android:layout_width="wrap_content"
@@ -25,15 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="65dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal">
 
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="top"-->
-        <!--android:text="用户名:"-->
-        <!--android:textSize="25sp" />-->
 
         <ImageView
             android:layout_width="50dp"
@@ -136,14 +130,14 @@
 
     <Button
         android:id="@+id/RegisterButton"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_shape"
-        android:textColor="@android:color/white"
         android:text="注册"
-        android:textSize="25sp" />
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
 
 
 </LinearLayout>

@@ -1,9 +1,9 @@
 package com.support.johnpig.healthmanager;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -114,10 +114,25 @@ public class ShowData extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     ResponseBody responseBody = response.body();
                     String result = responseBody.string();
+
                     Log.e("MainActivity", "onResponse: " + result);
-                    Toast.makeText(ShowData.this, "上传失败", Toast.LENGTH_SHORT).show();
+                    ShowData.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(ShowData.this,
+                                    "上传成功", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
                 } else if (!response.isSuccessful()) {
-                    Toast.makeText(ShowData.this, "上传失败", Toast.LENGTH_SHORT).show();
+
+                    ShowData.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(ShowData.this,
+                                    "上传失败", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });
