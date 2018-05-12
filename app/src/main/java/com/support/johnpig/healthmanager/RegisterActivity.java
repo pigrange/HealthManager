@@ -90,9 +90,11 @@ public class RegisterActivity extends AppCompatActivity
 
     private void createAccount(String account, String password, String sex) {
 
+
         User user = new User();
         user.setAccount(account);
         user.setPassword(password);
+        user.setSex(sex);
 
         UserData userData = new UserData();
         userData.setAccount(account);
@@ -103,6 +105,7 @@ public class RegisterActivity extends AppCompatActivity
         userData.setHigh_pressure(0);
         userData.setLow_pressure(0);
         userData.setCreatedTime("2017.3.6");
+        userData.save();
 
         UserData userData1 = new UserData();
         userData1.setAccount(account);
@@ -126,8 +129,7 @@ public class RegisterActivity extends AppCompatActivity
         userData2.setCreatedTime("2018.6.3");
         userData2.save();
 
-
-        if (user.save() && userData.save()) {
+        if (user.save()) {
             Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
             finish();
         } else {

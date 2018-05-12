@@ -79,6 +79,7 @@ public class ShowData extends AppCompatActivity {
 
         name.setText(userData.account);
         Sex.setText(userData.sex);
+
         Weight.setText(String.valueOf(userData.weight));
         Temperature.setText(String.valueOf(userData.temperature));
         HeartRate.setText(String.valueOf(userData.heart_rate));

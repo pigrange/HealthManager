@@ -15,15 +15,15 @@ public class UserData extends BaseModel {
     @Column
     public String sex;
     @Column
-    public double temperature;
+    public double temperature = 0;
     @Column
-    public double weight;
+    public double weight = 0;
     @Column
-    public double heart_rate;
+    public double heart_rate = 0;
     @Column
-    public double high_pressure;
+    public double high_pressure = 0;
     @Column
-    public double low_pressure;
+    public double low_pressure = 0;
     @Column
     public String createdTime;
 

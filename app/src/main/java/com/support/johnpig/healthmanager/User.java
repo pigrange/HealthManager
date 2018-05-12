@@ -14,6 +14,8 @@ public class User extends BaseModel {
     public String account;
     @Column
     public String password;
+    @Column
+    public String sex;
 
     public void setAccount(String account) {
         this.account = account;
@@ -22,6 +24,8 @@ public class User extends BaseModel {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setSex(String sex){this.sex = sex;}
 
 
 }

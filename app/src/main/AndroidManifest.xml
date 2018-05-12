@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.support.johnpig.healthmanager">
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -26,6 +25,11 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".DataList" />
         <activity android:name=".ShowData"></activity>
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
