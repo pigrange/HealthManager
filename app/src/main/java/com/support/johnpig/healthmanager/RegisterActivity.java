@@ -96,39 +96,6 @@ public class RegisterActivity extends AppCompatActivity
         user.setPassword(password);
         user.setSex(sex);
 
-        UserData userData = new UserData();
-        userData.setAccount(account);
-        userData.setSex(sex);
-        userData.setWeight(0);
-        userData.setTemperature(0);
-        userData.setHeart_rate(0);
-        userData.setHigh_pressure(0);
-        userData.setLow_pressure(0);
-        userData.setCreatedTime("2017.3.6");
-        userData.save();
-
-        UserData userData1 = new UserData();
-        userData1.setAccount(account);
-        userData1.setSex(sex);
-        userData1.setWeight(1);
-        userData1.setTemperature(1);
-        userData1.setHeart_rate(1);
-        userData1.setHigh_pressure(1);
-        userData1.setLow_pressure(1);
-        userData1.setCreatedTime("2014.5.2");
-        userData1.save();
-
-        UserData userData2 = new UserData();
-        userData2.setAccount(account);
-        userData2.setSex(sex);
-        userData2.setWeight(2);
-        userData2.setTemperature(2);
-        userData2.setHeart_rate(2);
-        userData2.setHigh_pressure(2);
-        userData2.setLow_pressure(2);
-        userData2.setCreatedTime("2018.6.3");
-        userData2.save();
-
         if (user.save()) {
             Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
             finish();

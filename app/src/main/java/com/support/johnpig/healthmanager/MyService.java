@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -69,7 +69,8 @@ public class MyService extends Service {
                 while (scanner.hasNextLine() && flag) {
                     String line = scanner.nextLine();
                     mainActivity.onDataReceived();
-                    EventBus.getDefault().post(new MessageEvent(parseData(line)));
+                    EventBus.getDefault()
+                            .post(new MessageEvent(createUser(parseData(line), mainActivity)));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -85,32 +86,38 @@ public class MyService extends Service {
             IoHelper.safeClose(ss);
         }
 
-        private UserData parseData(String str) {
+        private Map<String, String> parseData(String str) {
             String[] strs = str.split(",");
             Map<String, String> map = new HashMap<>();
             for (String s : strs) {
                 String[] ms = s.split(":");
                 map.put(ms[0], ms[1]);
             }
+            return map;
+        }
+
+        private UserData createUser(Map<String, String> map, CallBack callBack) {
+            User user = callBack.getUser();
             UserData userData = new UserData();
 
-            DateFormat d2 = DateFormat.getDateTimeInstance();
-            String str2 = d2.format(new Date());
+            SimpleDateFormat df = new SimpleDateFormat("yyyy.MM.dd");
+            String date = df.format(new Date());
 
-            userData.setCreatedTime(str2);
+            userData.setAccount(user.account);
+            userData.setSex(user.sex);
+            userData.setCreatedTime(date);
             userData.setHeart_rate(Double.valueOf(map.get("HeartRate")));
             userData.setTemperature(Double.valueOf(map.get("Temperature")));
             userData.setWeight(Double.valueOf(map.get("Weight")));
             userData.setHigh_pressure(Double.valueOf(map.get("HighPressure")));
             userData.setLow_pressure(Double.valueOf(map.get("LowPressure")));
-            if (userData.save()){
-                Log.e("myService","uerData has saved");
-            }else{
-                Log.e("myService","uerData save failed");
+            if (userData.save()) {
+                Log.e("myService", "uerData has saved");
+            } else {
+                Log.e("myService", "uerData save failed");
             }
             return userData;
         }
-
     }
 
     @Override

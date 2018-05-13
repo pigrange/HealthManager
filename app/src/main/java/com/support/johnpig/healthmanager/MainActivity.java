@@ -12,10 +12,11 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.greenrobot.eventbus.EventBus;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 public class MainActivity extends AppCompatActivity implements CallBack {
 
+    private User user;
     private TextView showSensorStatus;
     private String account;
     private MyService.serviceBinder serviceBinder;
@@ -39,10 +40,16 @@ public class MainActivity extends AppCompatActivity implements CallBack {
 
         final Intent intent = getIntent();
         account = intent.getStringExtra("account");
+        user = SQLite.select().from(User.class)
+                .where(User_Table.account.eq(account)).querySingle();
 
         showSensorStatus = findViewById(R.id.sensor_status);
+        TextView ipAddress = findViewById(R.id.current_ip);
         TextView login_user = findViewById(R.id.login_user);
+        TextView port = findViewById(R.id.current_port);
+        ipAddress.setText(IPUtils.getIpAddress(this));
         login_user.setText(account);
+        port.setText("60000");
 
         findViewById(R.id.receivedData).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements CallBack {
                 startActivity(intent);
             }
         });
-
         Switch mSwitch = findViewById(R.id.openServer);
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -72,9 +78,6 @@ public class MainActivity extends AppCompatActivity implements CallBack {
         });
     }
 
-
-
-
     @Override
     public void setSensorStatus(final boolean status) {
         MainActivity.this.runOnUiThread(new Runnable() {
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements CallBack {
             public void run() {
                 if (status) {
                     showSensorStatus.setText("已连接");
-                }else {
+                } else {
                     showSensorStatus.setText("未连接");
                 }
             }
@@ -94,8 +97,13 @@ public class MainActivity extends AppCompatActivity implements CallBack {
         MainActivity.this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-               Toast.makeText(MainActivity.this,"已收到数据",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "已收到数据", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public User getUser() {
+        return user;
     }
 }
