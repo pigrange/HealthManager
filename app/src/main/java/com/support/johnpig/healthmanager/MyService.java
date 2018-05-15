@@ -75,15 +75,15 @@ public class MyService extends Service {
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                IoHelper.safeClose(scanner);
-                IoHelper.safeClose(socket);
+                IOUtils.safeClose(scanner);
+                IOUtils.safeClose(socket);
                 mainActivity.setSensorStatus(false);
             }
         }
 
         public void closeServer() {
             flag = false;
-            IoHelper.safeClose(ss);
+            IOUtils.safeClose(ss);
         }
 
         private Map<String, String> parseData(String str) {

@@ -8,6 +8,7 @@ import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements CallBack {
 
     private User user;
     private TextView showSensorStatus;
+    private TextView showUrl;
+    private SetUrlFragment setUrlFragment;
     private String account;
     private MyService.serviceBinder serviceBinder;
     private ServiceConnection connection = new ServiceConnection() {
@@ -47,9 +50,39 @@ public class MainActivity extends AppCompatActivity implements CallBack {
         TextView ipAddress = findViewById(R.id.current_ip);
         TextView login_user = findViewById(R.id.login_user);
         TextView port = findViewById(R.id.current_port);
+        showUrl = findViewById(R.id.showUrl);
+
+        if (URLUtils.MY_HTTP_URL != null) {
+            showUrl.setText(URLUtils.MY_HTTP_URL);
+        }
+
+
+        setUrlFragment = new SetUrlFragment();
+        setUrlFragment.setOKClickListener(new SetUrlFragment.OnOkClickListener() {
+            @Override
+            public void OnOkClick(EditText editText) {
+                String url = editText.getText().toString();
+                if (!url.isEmpty()) {
+                    URLUtils.MY_HTTP_URL = url;
+                    showUrl.setText(url);
+                    setUrlFragment.dismiss();
+                } else {
+                    Toast.makeText(MainActivity.this,
+                            "请输入URL", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         ipAddress.setText(IPUtils.getIpAddress(this));
         login_user.setText(account);
         port.setText("60000");
+
+        findViewById(R.id.server_url).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setUrlFragment.show(getSupportFragmentManager(),"setUrlFragment");
+            }
+        });
 
         findViewById(R.id.receivedData).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements CallBack {
                 startActivity(intent);
             }
         });
+
         Switch mSwitch = findViewById(R.id.openServer);
         mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -106,4 +140,5 @@ public class MainActivity extends AppCompatActivity implements CallBack {
     public User getUser() {
         return user;
     }
+
 }

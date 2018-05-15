@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="85dp"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -197,12 +197,13 @@
 
     </LinearLayout>
 
+
     <Button
         android:id="@+id/uploadData"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/button_shape"
         android:text="上传数据"
         android:textColor="@android:color/white"

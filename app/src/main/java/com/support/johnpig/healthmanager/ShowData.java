@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,9 +24,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+import static com.support.johnpig.healthmanager.URLUtils.MY_HTTP_URL;
+
 public class ShowData extends AppCompatActivity {
 
-    UserData userData;
+    private UserData userData;
     private TextView name;
     private TextView Sex;
     private TextView Temperature;
@@ -89,7 +92,6 @@ public class ShowData extends AppCompatActivity {
 
     private void uploadData(UserData userData) {
         OkHttpClient okHttpClient = new OkHttpClient();
-
         FormBody formBody = new FormBody.Builder()
                 .add("name", userData.account)
                 .add("sex", userData.sex)
@@ -101,41 +103,49 @@ public class ShowData extends AppCompatActivity {
                 .build();
 
         //todo type your url here
-        String url = "http://192.168.100.107:8000/info/info/add/";
-        Request request = new Request.Builder().post(formBody).url(url).build();
-
-        okHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Log.e("error:", e.getMessage());
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    ResponseBody responseBody = response.body();
-                    String result = responseBody.string();
-
-                    Log.e("MainActivity", "onResponse: " + result);
-                    ShowData.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(ShowData.this,
-                                    "上传成功", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                } else if (!response.isSuccessful()) {
-
-                    ShowData.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(ShowData.this,
-                                    "上传失败", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+        String url = URLUtils.MY_HTTP_URL;
+        if (true) {
+            Request request = new Request.Builder().post(formBody).url(url).build();
+            okHttpClient.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    Log.e("error:", e.getMessage());
                 }
-            }
-        });
+
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        ResponseBody responseBody = response.body();
+                        String result = responseBody.string();
+
+                        Log.e("MainActivity", "onResponse: " + result);
+                        ShowData.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(ShowData.this,
+                                        "上传成功", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    } else if (!response.isSuccessful()) {
+                        ShowData.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(ShowData.this,
+                                        "上传失败", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }
+            });
+        } else {
+            ShowData.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(ShowData.this,
+                            "URL无效", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }

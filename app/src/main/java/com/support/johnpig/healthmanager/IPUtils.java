@@ -10,6 +10,7 @@ import java.net.SocketException;
 import java.util.Enumeration;
 
 public class IPUtils {
+
     public static String getIpAddress(Context context) {
         WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         assert wifiManager != null;

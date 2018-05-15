@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class IoHelper {
+public class IOUtils {
 
     public static void safeClose(@Nullable Closeable closeable) {
         if (closeable != null) {
