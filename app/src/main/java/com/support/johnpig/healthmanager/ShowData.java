@@ -19,6 +19,7 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -102,9 +103,8 @@ public class ShowData extends AppCompatActivity {
                 .add("low_pressure", String.valueOf(userData.low_pressure))
                 .build();
 
-        //todo type your url here
         String url = URLUtils.MY_HTTP_URL;
-        if (true) {
+        if (HttpUrl.parse(url) != null) {
             Request request = new Request.Builder().post(formBody).url(url).build();
             okHttpClient.newCall(request).enqueue(new Callback() {
                 @Override
@@ -116,14 +116,18 @@ public class ShowData extends AppCompatActivity {
                 public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                     if (response.isSuccessful()) {
                         ResponseBody responseBody = response.body();
-                        String result = responseBody.string();
-
+                        final String result = responseBody.string();
                         Log.e("MainActivity", "onResponse: " + result);
                         ShowData.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(ShowData.this,
-                                        "上传成功", Toast.LENGTH_SHORT).show();
+                                if (result.equals("{\"result\": \"ok\"}")) {
+                                    Toast.makeText(ShowData.this,
+                                            "上传成功", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(ShowData.this,
+                                            "上传失败", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         });
 

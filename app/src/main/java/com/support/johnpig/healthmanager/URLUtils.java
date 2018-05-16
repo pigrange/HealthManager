@@ -8,7 +8,7 @@ import java.net.URL;
 import static java.util.regex.Pattern.matches;
 
 public class URLUtils {
-    public static String MY_HTTP_URL = null;
+    public static String MY_HTTP_URL = "null";
 
     public static boolean IsUrl(String str) {
         String regex = "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?";
