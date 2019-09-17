@@ -1,9 +1,5 @@
-# HealthManager-A-simple-android-app
-简易安卓App—HealthMnager
----
-#### 简单介绍
-# 
-##### 一个基于安卓实现的用于健康信息管理的app
+# HealthManager
+## 一个基于安卓实现的用于健康信息管理的app
 
 第一个项目，一个基于Android平台的局域网TCP server，用于接受局域网下传感器发来的数据。
 实现了基本数据的解析，存储，和上传，管理的功能。
