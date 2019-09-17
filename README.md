@@ -5,14 +5,17 @@
 # 
 ##### 一个基于安卓实现的用于健康信息管理的app
 
-* 一个基本的注册与登陆功能。
-* 作为TCP服务端，接收来自传感器的数据（字符串），解析后生成一个数据健康信息表，并存在数据库中。  
+第一个项目，一个基于Android平台的局域网TCP server，用于接受局域网下传感器发来的数据。
+实现了基本数据的解析，存储，和上传，管理的功能。
 
-* 本地可以查看到接受的历史数据，并且能够上传至服务器。
+**技术栈**
+* BventBUS
+* OKHTTP
+* dbflow
 #
 
-![image](https://raw.githubusercontent.com/pigrange/HealthManager-A-simple-android-app/master/pictures/1.jpg)
+![](https://github.com/pigrange/HealthManager/blob/master/pictures/1.jpg?raw=true)
 #
-![image](https://raw.githubusercontent.com/pigrange/HealthManager-A-simple-android-app/master/pictures/2.jpg)
+![](https://github.com/pigrange/HealthManager/blob/master/pictures/2.jpg?raw=true)
 #
-![image](https://raw.githubusercontent.com/pigrange/HealthManager-A-simple-android-app/master/pictures/3.jpg)
+![](https://github.com/pigrange/HealthManager/blob/master/pictures/3.jpg?raw=true)
